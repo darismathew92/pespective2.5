@@ -21,7 +21,7 @@ import { auth, db } from '../../lib/firebase';
 import { GlobalContext } from '../../state/context/GlobalContext';
 
 
-const Post = ({ id, username, image, caption, likesCount }) => {
+const Post = ({ id, username, image, caption, likesCount}) => {
   const [isLiked, setIsLiked] = useState(false);
   const [comments, setComments] = useState([]);
   const [visibleComments, setVisibleComments] = useState(3);
