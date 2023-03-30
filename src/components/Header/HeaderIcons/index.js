@@ -4,7 +4,8 @@ export {
   AiOutlineHeart as Heart,
 } from 'react-icons/ai';
 export { FaTimesCircle as Cross } from 'react-icons/fa';
-export { FiCompass as Compass } from 'react-icons/fi';
+
 export { BsSearch as Search } from 'react-icons/bs';
-export { RiMessengerLine as Messenger } from 'react-icons/ri';
+
 export { IoPersonCircleOutline as ProfileIcon } from 'react-icons/io5';
+export { FaShoppingBag as Marketplace } from 'react-icons/fa';

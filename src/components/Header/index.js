@@ -4,9 +4,7 @@ import HeaderIcon from '../Header/HeaderIcon';
 import {
   Add,
   Home,
-  Heart,
-  Messenger,
-  Compass,
+  Marketplace,
   ProfileIcon,
 } from '../Header/HeaderIcons';
 
@@ -20,24 +18,14 @@ const HEADER_ITEMS = [
     name: 'Home',
   },
   {
-    icon: Messenger,
-    url: '/',
-    name: 'Messenger',
-  },
-  {
     icon: Add,
     url: '/',
     name: 'Add',
   },
   {
-    icon: Compass,
-    url: '/',
-    name: 'Discover',
-  },
-  {
-    icon: Heart,
-    url: '/',
-    name: 'Likes',
+    icon: Marketplace,
+    url: '/nftmarketplace',
+    name: 'nftmarketplace',
   },
   {
     icon: ProfileIcon,
