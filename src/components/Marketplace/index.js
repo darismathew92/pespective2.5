@@ -8,13 +8,28 @@ import {
   query,
 } from "firebase/firestore";
 import { db } from "../../lib/firebase";
-import Post from "../Post";
 import Header from "../Header";
+import { ConnectWallet } from "@thirdweb-dev/react";
+import {
+  useCreateDirectListing,
+  useContract,
+  Web3Button,
+} from "@thirdweb-dev/react";
+
+const contractAddress = "0x79AA75999269CB10d24a8fD858ce62DeBaAB5B29";
 
 const Marketplace = () => {
   const { user } = useContext(GlobalContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const { contract } = useContract(contractAddress, "marketplace-v3");
+  const {
+    mutateAsync: createDirectListing,
+    isLoading,
+    error,
+  } = useCreateDirectListing(contract);
+
 
   useEffect(() => {
     if (!user) return;
@@ -53,6 +68,19 @@ const Marketplace = () => {
                   <p className="mt-4 text-lg text-purple-100">
                     explore the art of the future
                   </p>
+                  <ConnectWallet />
+                  <Web3Button
+      contractAddress={contractAddress}
+      action={() =>
+        createDirectListing({
+          assetContractAddress: "0x85baF298720776DA2d0fA04f6FF31c72F38a7bed",
+          tokenId: "0",
+          pricePerToken: "0.1",
+        })
+      }
+    >
+      Create Direct Listing
+    </Web3Button>
                 </div>
               </div>
             </div>
