@@ -16,12 +16,17 @@ import {
   Web3Button,
 } from "@thirdweb-dev/react";
 
+import { ThirdwebNftMedia } from "@thirdweb-dev/react";
+
 const contractAddress = "0x79AA75999269CB10d24a8fD858ce62DeBaAB5B29";
 
 const Marketplace = () => {
   const { user } = useContext(GlobalContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [tokenId, setTokenId] = useState();
+  const [pricePerToken, setPricePerToken] = useState();
+  const [assetContractAddress, setAssetContractAddress] = useState("");
 
   const { contract } = useContract(contractAddress, "marketplace-v3");
   const {
@@ -29,7 +34,6 @@ const Marketplace = () => {
     isLoading,
     error,
   } = useCreateDirectListing(contract);
-
 
   useEffect(() => {
     if (!user) return;
@@ -69,18 +73,48 @@ const Marketplace = () => {
                     explore the art of the future
                   </p>
                   <ConnectWallet />
+                  <div>
+                    <label htmlFor="assetContractAddress">
+                      Asset Contract Address:
+                    </label>
+                    <input
+                      type="text"
+                      id="assetContractAddress"
+                      value={assetContractAddress}
+                      onChange={(e) => setAssetContractAddress(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="tokenId">Token ID:</label>
+                    <input
+                      type="text"
+                      id="tokenId"
+                      value={tokenId}
+                      onChange={(e) => setTokenId(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="pricePerToken">Price Per Token:</label>
+                    <input
+                      type="text"
+                      id="pricePerToken"
+                      value={pricePerToken}
+                      onChange={(e) => setPricePerToken(e.target.value)}
+                    />
+                  </div>
+
                   <Web3Button
-      contractAddress={contractAddress}
-      action={() =>
-        createDirectListing({
-          assetContractAddress: "0x85baF298720776DA2d0fA04f6FF31c72F38a7bed",
-          tokenId: "0",
-          pricePerToken: "0.1",
-        })
-      }
-    >
-      Create Direct Listing
-    </Web3Button>
+                    contractAddress={contractAddress}
+                    action={() =>
+                      createDirectListing({
+                        assetContractAddress: assetContractAddress,
+                        tokenId: tokenId,
+                        pricePerToken: pricePerToken,
+                      })
+                    }
+                  >
+                    Create Direct Listing
+                  </Web3Button>
                 </div>
               </div>
             </div>
