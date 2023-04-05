@@ -5,10 +5,10 @@ import Marketplace from '../components/Marketplace';
 
 
 
-const Profile = () => {
+const NFTMarketplace = () => {
   return (
       <Marketplace />
   );
 };
 
-export default Marketplace;
+export default NFTMarketplace;

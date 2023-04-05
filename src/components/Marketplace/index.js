@@ -1,13 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../state/context/GlobalContext";
-import {
-  collection,
-  doc,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
-import { db } from "../../lib/firebase";
+
 import Header from "../Header";
 import { ConnectWallet } from "@thirdweb-dev/react";
 import {
@@ -15,15 +8,12 @@ import {
   useContract,
   Web3Button,
 } from "@thirdweb-dev/react";
-
-import { ThirdwebNftMedia } from "@thirdweb-dev/react";
+import NFTList from "../../pages/NFTList";
 
 const contractAddress = "0x79AA75999269CB10d24a8fD858ce62DeBaAB5B29";
 
 const Marketplace = () => {
   const { user } = useContext(GlobalContext);
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [tokenId, setTokenId] = useState();
   const [pricePerToken, setPricePerToken] = useState();
   const [assetContractAddress, setAssetContractAddress] = useState("");
@@ -34,25 +24,6 @@ const Marketplace = () => {
     isLoading,
     error,
   } = useCreateDirectListing(contract);
-
-  useEffect(() => {
-    if (!user) return;
-
-    setLoading(true);
-    const userPostsCollection = collection(db, "posts");
-    const q = query(userPostsCollection, orderBy("createdAt", "desc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const userPosts = snapshot.docs
-        .map((doc) => doc.data())
-        .filter((post) => post.username === user.username);
-      setPosts(userPosts);
-      setLoading(false);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [user]);
 
   if (!user) return <div>Please log in to view your profile.</div>;
 
@@ -73,8 +44,14 @@ const Marketplace = () => {
                     explore the art of the future
                   </p>
                   <ConnectWallet />
+                </div>
+                
+              </div>
+            </div>
+            {/* Where every nft goes here */}
+            <div className="space-y-4 p-10">
                   <div>
-                    <label htmlFor="assetContractAddress">
+                    <label htmlFor="assetContractAddress" className="block text-sm font-medium text-gray-700">
                       Asset Contract Address:
                     </label>
                     <input
@@ -82,27 +59,34 @@ const Marketplace = () => {
                       id="assetContractAddress"
                       value={assetContractAddress}
                       onChange={(e) => setAssetContractAddress(e.target.value)}
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                     />
                   </div>
                   <div>
-                    <label htmlFor="tokenId">Token ID:</label>
+                    <label htmlFor="tokenId" className="block text-sm font-medium text-gray-700">
+                      Token ID:
+                    </label>
                     <input
                       type="text"
                       id="tokenId"
                       value={tokenId}
                       onChange={(e) => setTokenId(e.target.value)}
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                     />
                   </div>
                   <div>
-                    <label htmlFor="pricePerToken">Price Per Token:</label>
+                    <label htmlFor="pricePerToken" className="block text-sm font-medium text-gray-700">
+                      Price Per Token:
+                    </label>
                     <input
                       type="text"
                       id="pricePerToken"
                       value={pricePerToken}
                       onChange={(e) => setPricePerToken(e.target.value)}
+                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                     />
                   </div>
-
+    
                   <Web3Button
                     contractAddress={contractAddress}
                     action={() =>
@@ -112,18 +96,27 @@ const Marketplace = () => {
                         pricePerToken: pricePerToken,
                       })
                     }
+                    className="w-full mt-4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     Create Direct Listing
                   </Web3Button>
-                </div>
-              </div>
+                  {error && (
+                    <div className="mt-2 text-sm text-red-500">
+                      {error.message}
+                    </div>
+                  )}
+                  {isLoading && (
+                    <div className="mt-2 text-sm text-gray-500">
+                      Creating direct listing...
+                    </div>
+                  )}
             </div>
-            {/* Where every nft goes here */}
+           <NFTList/>
           </div>
         </div>
       </div>
     </>
-  );
+);
 };
 
-export default Marketplace;
+export default Marketplace;    
