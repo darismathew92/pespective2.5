@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { BsSearch } from 'react-icons/bs';
 import HeaderIcon from '../Header/HeaderIcon';
 import {
   Add,
@@ -47,7 +46,7 @@ const Header = () => {
           Perspective
         </div>
       </Link>
-      <div className="flex items-center px-2 space-x-4 bg-gray-100 border border-gray-400 rounded-lg group group-focus:border-gray-400">
+      {/* <div className="flex items-center px-2 space-x-4 bg-gray-100 border border-gray-400 rounded-lg group group-focus:border-gray-400">
         <label htmlFor="search" className="">
           <BsSearch className="text-lg text-gray-400" />
         </label>
@@ -58,7 +57,7 @@ const Header = () => {
           className="w-full px-2 py-1 transition bg-gray-100 rounded-sm outline-none hover:bg-transparent focus:bg-transparent placeholder:text-sm "
           placeholder="Search"
         />
-      </div>
+      </div> */}
       <div className="flex items-center space-x-2">
         <div className="flex space-x-4">
           {HEADER_ITEMS.map((item) => (

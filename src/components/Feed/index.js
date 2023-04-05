@@ -23,6 +23,7 @@ import {
 const Feed = () => {
   const { isUploadPostModalOpen } = useContext(GlobalContext);
   const dispatch = useContext(GlobalDispatchContext);
+  const windowHeight = window.innerHeight;
 
   const closeModal = () => {
     dispatch({
@@ -212,45 +213,51 @@ const Feed = () => {
         </div>
       </Modal>
 
-      <div className="grid w-full max-w-screen-lg grid-cols-3 gap-6 mx-auto mt-20 ">
-        <div className="flex flex-col w-full col-span-2 space-y-5 border-t-2 ">
-          {/* stories section */}
-          {/* <section className="flex p-4 space-x-4 overflow-x-scroll bg-white border border-black/10">
-            {new Array(10).fill(0).map((_, i) => (
-              <div
-                key={i}
-                className="rounded-full w-14 ring-[2px] ring-pink-500 ring-offset-2 h-14 bg-black flex-none"
-              />
-            ))}
-          </section> */}
+      <div className="w-full mx-auto mt-20">
+        <div className="w-full space-y-5 border-t-2">
+        <h2 className="text-3xl font-semibold text-center my-6">Featured NFTs</h2>
+    {/* iframes section */}
+    <section className="flex space-x-4 overflow-x-scroll p-4 w-4/5 mx-auto">
+      <iframe
+        src="https://ipfs.thirdwebcdn.com/ipfs/QmbAgC8YwY36n8H2kuvSWsRisxDZ15QZw3xGZyk9aDvcv7/marketplace-v3.html?contract=0x79AA75999269CB10d24a8fD858ce62DeBaAB5B29&chain=%7B%22name%22%3A%22Mumbai%22%2C%22chain%22%3A%22%22%2C%22rpc%22%3A%5B%22https%3A%2F%2Fmumbai.rpc.thirdweb.com%2F5a9bc94b87f7cbbbfbbc234bf1e07f0adf5f3cf3012c9f26f9fc9820d64df93a%22%5D%2C%22nativeCurrency%22%3A%7B%22symbol%22%3A%22MATIC%22%2C%22name%22%3A%22MATIC%22%2C%22decimals%22%3A18%7D%2C%22shortName%22%3A%22mumbai%22%2C%22chainId%22%3A80001%2C%22testnet%22%3Atrue%2C%22slug%22%3A%22mumbai%22%7D&directListingId=0"
+        width="600px"
+        height="600px"
+        style={{ maxWidth: "100%" }}
+        frameBorder="0"
+      ></iframe>
 
-          {/* posts section */}
-          <section className="flex flex-col gap-y-3">
-            {posts.map((post) => (
-              <Post key={post.id} {...post} />
-            ))}
-          </section>
-        </div>
+      <iframe
+        src="https://ipfs.thirdwebcdn.com/ipfs/QmbAgC8YwY36n8H2kuvSWsRisxDZ15QZw3xGZyk9aDvcv7/marketplace-v3.html?contract=0x79AA75999269CB10d24a8fD858ce62DeBaAB5B29&chain=%7B%22name%22%3A%22Mumbai%22%2C%22chain%22%3A%22%22%2C%22rpc%22%3A%5B%22https%3A%2F%2Fmumbai.rpc.thirdweb.com%2F5a9bc94b87f7cbbbfbbc234bf1e07f0adf5f3cf3012c9f26f9fc9820d64df93a%22%5D%2C%22nativeCurrency%22%3A%7B%22symbol%22%3A%22MATIC%22%2C%22name%22%3A%22MATIC%22%2C%22decimals%22%3A18%7D%2C%22shortName%22%3A%22mumbai%22%2C%22chainId%22%3A80001%2C%22testnet%22%3Atrue%2C%22slug%22%3A%22mumbai%22%7D&directListingId=1"
+        width="600px"
+        height="600px"
+        style={{ maxWidth: "100%" }}
+        frameBorder="0"
+      ></iframe>
 
-        {/* this is our sidebar */}
-        <div className="fixed right-[15%] max-w-sm">
-          <div className="flex">
-            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates,
-            optio? Eius quia quis iste ipsa in impedit eligendi voluptatibus
-            tenetur praesentium iure! Soluta nemo doloremque quod est quisquam
-            explicabo placeat, amet deleniti ex saepe, officiis quaerat
-            asperiores aliquid molestias rem iure perspiciatis quam! Quidem quo
-            laudantium cumque, dolore mollitia illo ullam. Perspiciatis cumque
-            in, recusandae reprehenderit asperiores, optio explicabo a adipisci
-            fuga ad facilis ipsum, ullam dicta ipsa dignissimos placeat
-            deleniti. Mollitia aliquid dolor odit, ullam laboriosam corrupti et.
-            Id atque dolor repellendus porro, laboriosam rem odio ex quaerat
-            unde tenetur consectetur vero! Veniam sequi et a illo consectetur
-            repellat. */}
-          </div>
-        </div>
+      <iframe
+        src="https://ipfs.thirdwebcdn.com/ipfs/QmbAgC8YwY36n8H2kuvSWsRisxDZ15QZw3xGZyk9aDvcv7/marketplace-v3.html?contract=0x79AA75999269CB10d24a8fD858ce62DeBaAB5B29&chain=%7B%22name%22%3A%22Mumbai%22%2C%22chain%22%3A%22%22%2C%22rpc%22%3A%5B%22https%3A%2F%2Fmumbai.rpc.thirdweb.com%2F5a9bc94b87f7cbbbfbbc234bf1e07f0adf5f3cf3012c9f26f9fc9820d64df93a%22%5D%2C%22nativeCurrency%22%3A%7B%22symbol%22%3A%22MATIC%22%2C%22name%22%3A%22MATIC%22%2C%22decimals%22%3A18%7D%2C%22shortName%22%3A%22mumbai%22%2C%22chainId%22%3A80001%2C%22testnet%22%3Atrue%2C%22slug%22%3A%22mumbai%22%7D&directListingId=2"
+        width="600px"
+        height="600px"
+        style={{ maxWidth: "100%" }}
+      ></iframe>
+    </section>
+
+    {/* posts section */}
+    <h2 className="text-3xl font-semibold text-center my-6">Recent Posts</h2>
+    <section className="grid grid-cols-2 gap-4 p-4">
+              
+              {loading ? (
+                <div>Loading...</div>
+              ) : posts.length > 0 ? (
+                posts.map((post) => <Post key={post.id} {...post} />)
+              ) : (
+                <div>No posts found.</div>
+              )}
+            </section>
+  </div>
+  {/* ... */}
+</div>
       </div>
-    </div>
   );
 };
 

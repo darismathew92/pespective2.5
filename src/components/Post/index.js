@@ -16,7 +16,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { BsBookmark, BsEmojiSmile, BsThreeDots } from 'react-icons/bs';
 import { FaRegComment } from 'react-icons/fa';
-import { IoShareOutline } from 'react-icons/io5';
 import { auth, db } from '../../lib/firebase';
 import { GlobalContext } from '../../state/context/GlobalContext';
 
