@@ -8,7 +8,7 @@ import {
   useContract,
   Web3Button,
 } from "@thirdweb-dev/react";
-import NFTList from "../../pages/NFTList";
+import NFTList from "../../pages/nftlist";
 
 const contractAddress = "0x79AA75999269CB10d24a8fD858ce62DeBaAB5B29";
 
