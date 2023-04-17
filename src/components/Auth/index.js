@@ -222,7 +222,7 @@ const Auth = () => {
                 onSubmit={onboardingSubmitHandler}
                 className="flex flex-col items-center space-y-5"
               >
-                <div className="my-5 text-5xl tracking-wider">Instagram</div>
+                <div className="my-5 text-5xl tracking-wider">Perspective</div>
                 <input
                   type="username"
                   name="username"
