@@ -261,16 +261,9 @@ const Auth = () => {
               <div className="h-[0.8px] w-full bg-slate-400" />
             </div>
             <div className="flex items-center justify-center w-full text-center text-indigo-900">
-              <AiFillFacebook className="inline-block mr-2 text-2xl" />
-              <span className="text-sm font-semibold">
-                {isLoginForm ? 'Log in' : 'Sign Up'} with Facebook
-              </span>
+              
             </div>
-            {isLoginForm && (
-              <div className="w-full text-xs text-center text-indigo-900">
-                Forgotten your password?
-              </div>
-            )}
+            
           </div>
           <div className="w-full py-5 space-y-5 text-sm text-center bg-white border border-gray-300">
             {isLoginForm
