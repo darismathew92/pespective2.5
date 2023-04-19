@@ -144,7 +144,11 @@ const Post = ({ id, username, image, caption, likesCount}) => {
     <div className="flex flex-col w-full border border-gray-200">
       <div className="flex items-center justify-between w-full p-2 ">
         <div className="flex items-center justify-center space-x-2">
-          <div className="w-10 h-10 bg-black border-2 rounded-full" />
+           <img
+            src="https://firebasestorage.googleapis.com/v0/b/perspective2-2f35d.appspot.com/o/avatar.png?alt=media&token=f9a957e1-6452-4d47-8c86-2812394ecb65"
+            alt="avatar"
+            className="w-15 h-10 rounded-full"
+          />
           <div>{username}</div>
         </div>
       {/* ed */}
