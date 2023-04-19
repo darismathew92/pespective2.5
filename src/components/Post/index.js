@@ -14,7 +14,7 @@ import {
 import Image from 'next/image';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { BsBookmark, BsEmojiSmile, BsThreeDots } from 'react-icons/bs';
+import {  BsEmojiSmile, BsThreeDots } from 'react-icons/bs';
 import { FaRegComment } from 'react-icons/fa';
 import { auth, db } from '../../lib/firebase';
 import { GlobalContext } from '../../state/context/GlobalContext';
@@ -24,8 +24,9 @@ const Post = ({ id, username, image, caption, likesCount}) => {
   const [isLiked, setIsLiked] = useState(false);
   const [comments, setComments] = useState([]);
   const [visibleComments, setVisibleComments] = useState(3);
-
+  const { user } = useContext(GlobalContext);
   const [menuVisible, setMenuVisible] = useState(false);
+
 
   const handleMenuToggle = () => {
     setMenuVisible(!menuVisible);
@@ -37,13 +38,22 @@ const Post = ({ id, username, image, caption, likesCount}) => {
   };
 
   const handleRemovePost = async () => {
+    if (username !== user.username) {
+      alert('You can only delete your own post');
+      console.log(username,user.username)
+    }
+    else{
+    if(confirm('Are you sure you want to delete this post?')) {
     try {
       await deleteDoc(doc(db, 'posts', id));
       console.log('Post removed successfully');
-    } catch (error) {
+    } 
+  catch (error) {
       console.error('Error removing post:', error);
     }
-  };
+  }
+}
+};
 
   const handleSeeMoreComments = () => {
     setVisibleComments(visibleComments + 3);
@@ -116,8 +126,6 @@ const Post = ({ id, username, image, caption, likesCount}) => {
   }, [id]);
 
   const comment = useRef(null);
-
-  const { user } = useContext(GlobalContext);
 
   const handlePostComment = async (e) => {
     e.preventDefault();
