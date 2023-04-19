@@ -31,10 +31,10 @@ const Marketplace = () => {
     <>
       <Header />
       <div className="w-full h-full bg-[#FAFAFA]">
-        <div className="grid w-full max-w-screen-lg grid-cols-1 gap-6 mx-auto mt-20">
-          <div className="flex flex-col w-full space-y-5 border-t-2 ">
-            {/* My Profile section */}
-            <div className="w-full py-8 bg-gradient-to-r from-purple-500 to-indigo-500 max-w-screen-lg">
+    <div className="grid w-full grid-cols-1 gap-6 mx-auto mt-20">
+      <div className="flex flex-col w-full space-y-5 border-t-2 ">
+        {/* My Profile section */}
+        <div className="w-full py-8 bg-gradient-to-r from-purple-500 to-indigo-500">
               <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                   <h2 className="text-3xl font-extrabold text-white">
@@ -49,7 +49,8 @@ const Marketplace = () => {
               </div>
             </div>
             {/* Where every nft goes here */}
-            <div className="space-y-4 p-10">
+            <div className="w-full px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+    <div className="space-y-4 w-9/12">
                   <div className="">
                     <label htmlFor="assetContractAddress" className="block text-sm font-medium text-gray-700">
                       Asset Contract Address:
@@ -110,6 +111,7 @@ const Marketplace = () => {
                       Creating direct listing...
                     </div>
                   )}
+            </div>
             </div>
            <NFTList/>
           </div>
