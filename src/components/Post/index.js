@@ -203,10 +203,7 @@ const Post = ({ id, username, image, caption, likesCount}) => {
           </div>
         </div>
         <div>
-          <BsBookmark
-            size={20}
-            className="text-black cursor-pointer hover:text-black/50"
-          />
+       
         </div>
       </div>
       <div className="px-2">
